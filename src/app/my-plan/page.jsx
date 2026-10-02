@@ -1,11 +1,11 @@
 'use client'
-import { useState, useContext } from "react";
+import { useState, useContext,useEffect } from "react";
 import { workoutContext } from "../context/context";
 import Link from "next/link";
 import PlanMetrics from "./countpart";
 import PlanControls from "./barpart";
 import WorkoutList from "./listpart";
-
+import Loading from "./loading";
 
 const Myplan = () => {
   const {
@@ -19,14 +19,21 @@ const Myplan = () => {
   const [currentbutton, setactiveFunction] = useState('today');
 
   const [sortBy, setSortBy] = useState('Duration');
-  
+  const [loading, setLoading] = useState(true);
  
+  useEffect(() => {
+
+    const timer = setTimeout(() => setLoading(false), 500);
+
+    return () => clearTimeout(timer);
+
+  }, []);
 
 
-  const rawList =
-    currentbutton === 'today'
-      ? (selectedworkouts || []) : (selectedworkoutsforsave || []);
+  const rawList = currentbutton === 'today'
+? (selectedworkouts || []) : (selectedworkoutsforsave || []);
 
+  
   const currentList = [...rawList].sort((a, b) => {
 
     if (sortBy === 'Duration') {
@@ -50,7 +57,7 @@ const Myplan = () => {
     return 0;
   });
 
-
+  if (loading) return <Loading />;
 
   return (
 
