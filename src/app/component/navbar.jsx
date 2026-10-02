@@ -75,7 +75,7 @@ const isPlan = pathname === '/my-plan';
         <Link href="/my-plan" className='flex items-center gap-2 hover:opacity-80 transition-opacity'>
           <span className="text-[#D1D5DB]  font-semibold text-sm sm:text-[14px] md:text-[16px] lg:text-[18px]">Plan</span>
 
-          <span className="bg-[#C2F800] text-[#C2F800] border border-[#232732] text-xs font-bold px-[8px] py-[2px] w-6 h-6 rounded-full flex items-center justify-center">
+          <span className="bg-[#C2F800] text-[#000000] border border-[#232732] text-xs font-bold px-[8px] py-[2px] w-6 h-6 rounded-full flex items-center justify-center">
 {selectedworkouts.length}
           </span>
         </Link>
